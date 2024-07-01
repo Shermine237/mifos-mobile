@@ -71,12 +71,16 @@ android {
 dependencies {
 
     implementation(projects.core.logs)
-    implementation(projects.feature.guarantor)
     implementation(projects.core.common)
     implementation(projects.core.model)
     implementation(projects.core.data)
     implementation(projects.core.datastore)
     implementation(projects.ui)
+    implementation(projects.feature.loan)
+
+    implementation(projects.feature.beneficiary)
+    implementation(projects.feature.guarantor)
+
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation(libs.androidx.lifecycle.ktx)
