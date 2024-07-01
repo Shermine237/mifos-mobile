@@ -22,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -48,6 +49,7 @@ import com.owlbuddy.www.countrycodechooser.utils.enums.CountryCodeType
 import org.mifos.mobile.R
 import org.mifos.mobile.core.ui.component.MifosMobileIcon
 import org.mifos.mobile.core.ui.component.MifosOutlinedTextField
+import org.mifos.mobile.core.ui.theme.MifosMobileTheme
 
 /**
  * @author pratyush
@@ -236,7 +238,7 @@ fun RegistrationScreen(
             Text(
                 text = stringResource(id = R.string.verification_mode),
                 modifier = Modifier.padding(end = 8.dp),
-                color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
             radioOptions.forEach { authMode ->
                 RadioButton(
@@ -245,7 +247,7 @@ fun RegistrationScreen(
                 )
                 Text(
                     text = authMode,
-                    color = if (isSystemInDarkTheme()) Color.White else Color.Black
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -270,9 +272,7 @@ fun RegistrationScreen(
                 .padding(start = 16.dp, end = 16.dp, top = 4.dp),
             contentPadding = PaddingValues(12.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = if (isSystemInDarkTheme()) Color(
-                    0xFF9bb1e3
-                ) else Color(0xFF325ca8)
+                containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
             Text(text = stringResource(id = R.string.register))
@@ -283,5 +283,7 @@ fun RegistrationScreen(
 @Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun RegistrationScreenPreview() {
-    RegistrationScreen({ _, _, _, _, _, _, _, _, _ -> }, { 0f })
+    MifosMobileTheme {
+        RegistrationScreen({ _, _, _, _, _, _, _, _, _ -> }, { 0f })
+    }
 }
